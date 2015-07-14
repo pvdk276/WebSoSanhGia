@@ -32,10 +32,40 @@ public class SearchProduct {
 				name=col.select("h3").text();
 				store="";
 				storeUrl=col.select("cite").text();
-				imageUrl="";
+				imageUrl=col.select("div[class=col1-img] > a").select("img").attr("src");
 				price=col.select("div[class=product-col2] > p").select("strong:not([span])").text().split(" ")[0];										
 
 				if(storeUrl.contains("/"))
+				products.add(new Product(name, store, price, storeUrl, imageUrl));
+				//System.out.println(content.get(0));
+			}
+		}
+		return products;
+	}
+	
+	public static ArrayList<Product> getInfoProductCategory(Elements elements){
+		ArrayList<Product> products=new ArrayList<Product>();
+		for(Element e: elements){
+			for(Element row: e.select("tbody").select("tr")){
+				//ArrayList<String> content=new ArrayList<String>();
+				//Elements col=row.select("td");
+				//System.out.println(col.get(0).text());
+				//String[] content=col.get(0).text().split(" ");
+				//products.add(new Product("", "", col.get(1).text(), "", ""));
+				String name="";
+				String store="";
+				String storeUrl="";
+				String imageUrl="";
+				String price="";
+				Element col=row.select("td").first();
+				name=col.select("h3 > a").attr("title");
+				store="";
+				storeUrl=col.select("h3 > a").attr("href");
+				imageUrl=col.select("div[class=col1-img] > a").select("img").attr("src");
+				Element col2=col.nextElementSibling();
+				price=col.select("div[class=product-col2] > p").select("strong:not([span])").text().split(" ")[0];	;									
+
+				
 				products.add(new Product(name, store, price, storeUrl, imageUrl));
 				//System.out.println(content.get(0));
 			}

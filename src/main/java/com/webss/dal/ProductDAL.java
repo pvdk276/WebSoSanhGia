@@ -2,6 +2,7 @@ package com.webss.dal;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProductDAL {
@@ -27,6 +28,26 @@ public class ProductDAL {
 		
 		int result = call.executeUpdate();
 		connectdb.closeConnect();
+		return result;
+	}
+	
+	/**
+	 * 
+	 * @param productName
+	 * @param productStore
+	 * @return
+	 * @throws SQLException
+	 */
+	public ResultSet selectProductByNameAndStore(String productName,String productStore) throws SQLException{
+		ConnectDB connectdb = new ConnectDB();
+		Connection conn = connectdb.openConnect();
+		CallableStatement call=conn.prepareCall("{call selectProductByNameAndStore(?,?)}");
+		
+		call.setString("productName",productName);
+		call.setString("productStore", productStore);
+		
+		ResultSet result = call.executeQuery();
+		//connectdb.closeConnect();
 		return result;
 	}
 }

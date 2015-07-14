@@ -2,12 +2,13 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="./header.jsp" %>
 <html>
 <head>
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<title>Web so sánh giá</title>
+<title>Web báo giá online</title>
 <style>
 body {
 	background: #343d46;
@@ -78,15 +79,16 @@ font-weight: 500;
 .container-1:hover button.icon:hover {
 	background: white;
 }
+
 </style>
 </head>
 <body>
+
 	<form action="search" method="get">
 		<div>
 			<div class="box">
-			<h3>WebSoSanh - Công cụ tìm kiếm giá cả trực tuyến</h3>
+			<h3>Web Báo Giá - Công cụ tìm kiếm giá cả trực tuyến</h3>
 				<div class="container-1">
-				
 					<input type="search" name="item" id="search"
 						placeholder="Search..." />
 					<button class="icon">

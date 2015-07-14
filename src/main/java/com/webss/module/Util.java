@@ -82,5 +82,14 @@ public class Util {
 		return products;
 		
 	}
+	
+	public static ArrayList<Product> initCategory(String item) throws IOException{
+		String url="http://websosanh.vn/"+item;
+		String name="";
+		Elements elements=ElementUtil.getElements(url,name);
+		ArrayList<Product> products=SearchProduct.getInfoProductCategory(elements);
+		return products;
+		
+	}
 		
 }
